@@ -1,0 +1,5 @@
+selenium
+openai
+beautifulsoup4
+lxml
+pytest
