@@ -3,3 +3,6 @@ openai
 beautifulsoup4
 lxml
 pytest
+selenium
+webdriver-manager
+flask  # add this too, to show output in browser

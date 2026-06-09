@@ -5,11 +5,11 @@
   },
   "password": {
     "type": "name",
-    "value": "username"
+    "value": "password"
   },
   "login_button": {
     "type": "xpath",
-    "value": "//button[not(@type='hidden')]"
+    "value": "//button[not(@type='hid')]"
   },
   "credentials": {
     "username": "Admin",
