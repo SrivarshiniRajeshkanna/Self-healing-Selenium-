@@ -4,5 +4,6 @@ services:
     env: python
     buildCommand: |
       pip install -r requirements.txt
-      apt-get install -y chromium chromium-driver
+      apt-get update
+      apt-get install -y chromium-driver
     startCommand: python run.py
