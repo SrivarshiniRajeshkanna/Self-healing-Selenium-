@@ -5,7 +5,7 @@
   },
   "password": {
     "type": "name",
-    "value": "password"
+    "value": "username"
   },
   "login_button": {
     "type": "xpath",
