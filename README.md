@@ -238,6 +238,60 @@ Open `report.html` in browser for visual test report.
 
 ---
 
+---
+
+## 🚀 Deploy to Render
+
+### Quick Start
+1. **Push to GitHub**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+2. **Deploy to Render**
+   - Go to [Render Dashboard](https://dashboard.render.com)
+   - Click **"New +" → "Web Service"**
+   - Connect your GitHub repo
+   - Fill in these settings:
+
+   | Setting | Value |
+   |---------|-------|
+   | **Name** | `self-healing-selenium` |
+   | **Environment** | `Python 3` |
+   | **Build Command** | `pip install -r requirements.txt` |
+   | **Start Command** | `streamlit run app.py --server.port=$PORT --server.address=0.0.0.0` |
+   | **Instance Type** | Standard (or higher) |
+
+3. **Click "Create Web Service"** — Render will build and deploy automatically
+
+4. **Access Your App**
+   - Your app will be live at: `https://{your-service-name}.onrender.com`
+   - Example: `https://self-healing-selenium.onrender.com`
+
+### ✅ What's Pre-Configured
+- ✅ **Headless Chrome**: Automatically enabled in `driver_factory.py`
+- ✅ **Streamlit Web UI**: `app.py` runs the interactive dashboard
+- ✅ **Dynamic Port Binding**: Render's `$PORT` environment variable
+- ✅ **Network Sandbox**: `--no-sandbox` flag for containerized environment
+- ✅ `.gitignore` & `.renderignore`: Keeps build small and fast
+
+### 📌 Alternative: Use render.yaml
+If you prefer, Render can read deployment config from `render.yaml`:
+1. Commit the `render.yaml` file to your repo
+2. In Render dashboard, select **"Use existing render.yaml"**
+3. Deploy — Render uses the exact config from `render.yaml`
+
+### ⚠️ Important Notes
+- **Free tier**: 15-minute request timeout (adjust test timeouts if needed)
+- **No display server**: Tests run headless (already configured)
+- **Browser persistence**: Each request gets a fresh browser instance
+- **Data storage**: Use external services for persistent data (not Render's ephemeral disk)
+
+---
+
 ## 📋 All Failure Scenarios and Outputs
 
 | Scenario | What Happens | Output |

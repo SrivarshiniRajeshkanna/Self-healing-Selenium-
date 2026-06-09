@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
-import subprocess
+from webdriver_manager.chrome import ChromeDriverManager
 
 class DriverFactory:
 
@@ -14,12 +14,9 @@ class DriverFactory:
         options.add_argument("--disable-gpu")
         options.add_argument("--window-size=1920,1080")
 
-        # Auto-detect chromium path on Render
-        chrome_path = subprocess.check_output(["which", "chromium"]).decode().strip()
-        driver_path = subprocess.check_output(["which", "chromedriver"]).decode().strip()
-
-        options.binary_location = chrome_path
-        service = Service(driver_path)
-
-        driver = webdriver.Chrome(service=service, options=options)
+        # Works on Windows, Mac, and Linux automatically
+        driver = webdriver.Chrome(
+            service=Service(ChromeDriverManager().install()),
+            options=options
+        )
         return driver

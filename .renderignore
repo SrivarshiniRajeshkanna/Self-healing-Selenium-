@@ -1,0 +1,14 @@
+__pycache__
+.pytest_cache
+.git
+.gitignore
+README.md
+RENDER_DEPLOYMENT.md
+tests/__pycache__
+core/__pycache__
+ai/__pycache__
+locators/__pycache__
+*.pyc
+.vscode
+.idea
+.DS_Store
