@@ -1,0 +1,33 @@
+name: Self-Healing Selenium Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install Chrome
+      run: |
+        wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt-get install -y /tmp/chrome.deb
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run tests
+      run: pytest tests/test_login.py -v -s
+      env:
+        GOOGLE_CHROME_BIN: /usr/bin/google-chrome
+        CHROMEDRIVER_PATH: /usr/local/bin/chromedriver
